@@ -1,39 +1,52 @@
 package com.wava.ordermgmt.model;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Table
+@Table(name = "ORDER")
 @Entity
 public class Order {
 	@Id
-	private Long orderId;
-	private LocalDateTime orderDate;
-	private String orderStatus;
-	private BigDecimal orderTotal;
-	
-	private List<OrderLineItem> orderLineItems = new ArrayList<>();
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "order_id")
+	private long orderId;
 
-	public Long getOrderId() {
+	/*
+	 * @Basic
+	 * 
+	 * @Temporal(TemporalType.TIMES	TAMP)
+	 * 
+	 * @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	 * 
+	 * @Column(name = "order_date") private Date orderDate;
+	 */
+	
+
+    @OneToMany(mappedBy = "order")
+    private Set<OrderLineItem> orderLineItems;
+
+
+	@Column(name = "order_status")
+	private String orderStatus;
+
+	@Column(name = "order_total")
+	private float orderTotal;
+	
+	public Order() {}
+
+	public long getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(Long orderId) {
+	public void setOrderId(long orderId) {
 		this.orderId = orderId;
-	}
-
-	public LocalDateTime getOrderDate() {
-		return orderDate;
-	}
-
-	public void setOrderDate(LocalDateTime orderDate) {
-		this.orderDate = orderDate;
 	}
 
 	public String getOrderStatus() {
@@ -44,20 +57,26 @@ public class Order {
 		this.orderStatus = orderStatus;
 	}
 
-	public BigDecimal getOrderTotal() {
+	public float getOrderTotal() {
 		return orderTotal;
 	}
 
-	public void setOrderTotal(BigDecimal orderTotal) {
+	public void setOrderTotal(float orderTotal) {
 		this.orderTotal = orderTotal;
 	}
+	
+	
 
-	public List<OrderLineItem> getOrderLineItems() {
+	public Set<OrderLineItem> getOrderLineItems() {
 		return orderLineItems;
 	}
 
-	public void setOrderLineItems(List<OrderLineItem> orderLineItems) {
+	public void setOrderLineItems(Set<OrderLineItem> orderLineItems) {
 		this.orderLineItems = orderLineItems;
 	}
+	
+	
+
+	
 
 }
