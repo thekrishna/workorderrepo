@@ -1,4 +1,4 @@
-package com.wava.ordermgmt.controller;
+package com.wava.ordermgmt.service;
 
 import org.springframework.stereotype.Service;
 
