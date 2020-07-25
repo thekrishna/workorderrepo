@@ -6,15 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table
 @Entity
 public class Order {
+	@Id
 	private Long orderId;
 	private LocalDateTime orderDate;
 	private String orderStatus;
 	private BigDecimal orderTotal;
+	
 	private List<OrderLineItem> orderLineItems = new ArrayList<>();
 
 	public Long getOrderId() {
