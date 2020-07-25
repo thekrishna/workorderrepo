@@ -1,4 +1,4 @@
-package com.wava.ordermgmt;
+package com.wava.ordermgmt.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

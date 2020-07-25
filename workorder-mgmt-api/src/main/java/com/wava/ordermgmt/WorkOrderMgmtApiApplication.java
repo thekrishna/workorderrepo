@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WorkorderMgmtApiApplication {
+public class WorkOrderMgmtApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WorkorderMgmtApiApplication.class, args);
+		SpringApplication.run(WorkOrderMgmtApiApplication.class, args);
 	}
 
 }
