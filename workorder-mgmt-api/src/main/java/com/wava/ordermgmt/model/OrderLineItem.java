@@ -11,14 +11,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Table(name = "ORDER_LINE_ITEM_TBL")
 @Entity
 public class OrderLineItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "order_line_number")
-	private long orderLineNumber;
-
+	/*
+	 * @Column(name = "order_line_number") private long orderLineNumber;
+	 */
+	@Column(name = "id")
+	private Long id;
+	
 	@Column(name = "order_description")
 	private String orderDescription;
 	private Integer quantity;
@@ -29,7 +34,8 @@ public class OrderLineItem {
 	private String productCode;
 
 	@ManyToOne()
-	@JoinColumn(name = "order_id", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "orderId")
+	@JsonIgnore
 	private Order order;
 
 	public OrderLineItem() {
@@ -39,12 +45,12 @@ public class OrderLineItem {
 		this.order = order;
 	}
 
-	public long getOrderLineNumber() {
-		return orderLineNumber;
+	public Long getId() {
+		return id;
 	}
 
-	public void setOrderLineNumber(long orderLineNumber) {
-		this.orderLineNumber = orderLineNumber;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getOrderDescription() {
@@ -113,7 +119,7 @@ public class OrderLineItem {
 
 	@Override
 	public String toString() {
-		return "OrderLineItem [orderLineNumber=" + orderLineNumber + ", orderDescription=" + orderDescription
+		return "OrderLineItem [Id=" + id + ", orderDescription=" + orderDescription
 				+ ", quantity=" + quantity + ", price=" + price + ", topping1=" + topping1 + ", topping2=" + topping2
 				+ ", topping3=" + topping3 + ", productCode=" + productCode + ", order=" + order + "]";
 	}

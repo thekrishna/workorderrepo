@@ -3,6 +3,7 @@ package com.wava.ordermgmt.model;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,32 +19,39 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "order_id")
-	private long orderId;
+	/*
+	 * @Column(name = "order_id") private long orderId;
+	 */
+	@Column(name = "id")
+	private Long id;
 
 	@Column(name = "order_date")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime orderDate;
-	
+
 	@Column(name = "order_status")
 	private String orderStatus;
 
 	@Column(name = "order_total")
 	private float orderTotal;
 
-	@OneToMany(mappedBy = "order")
+	//@OneToMany(mappedBy = "order", cascade = CascadeType.ALL) //targetEntity = OrderLineItem.class)
+	@OneToMany(cascade = CascadeType.ALL)
 	private Set<OrderLineItem> orderLineItems;
 
 	public Order() {
 	}
 
-	public long getOrderId() {
-		return orderId;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setOrderId(long orderId) {
-		this.orderId = orderId;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
+
 
 	public LocalDateTime getOrderDate() {
 		return orderDate;
@@ -79,7 +87,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus
+		return "Order [orderId=" + id + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus
 				+ ", orderTotal=" + orderTotal + ", orderLineItems=" + orderLineItems + "]";
 	}
 
