@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "0b6818bf-7bdc-4aba-a1e8-64d86dbe1046",
+		"name": "OrderAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST - Order",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept-Charset",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"orderDate\":\"2020-07-25 18:10:12\",\n   \"orderStatus\":\"Created\",\n   \"orderTotal\":8,\n   \"channelType\": \"store\",\n   \"orderLineItems\":[\n      {\n         \"orderLineItemNumber\":1,\n         \"orderDescription\":\"Spicy\",\n         \"quantity\":1,\n         \"price\":5,\n         \"topping1\":\"Onion\",\n         \"topping2\":\"Pepper\",\n         \"topping3\":\"Jalppino\",\n         \"productCode\":\"VegPrizza\"\n},\n      {\n         \"orderLineItemNumber\":2,\n         \"orderDescription\":\"Normal\",\n         \"quantity\":1,\n         \"price\":3,\n         \"productCode\":\"SandWich\"\n      \n}\n   \n]\n}\n \n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orders/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET  Orders By OrderId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orders/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
