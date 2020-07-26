@@ -31,11 +31,12 @@ public class Order {
 	@Column(name = "order_status")
 	private String orderStatus;
 
+	@Column(name = "channelType")
+	private String channelType;
+	
 	@Column(name = "order_total")
 	private float orderTotal;
 
-	// @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) //targetEntity =
-	// OrderLineItem.class)
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<OrderLineItem> orderLineItems;
 
@@ -82,10 +83,23 @@ public class Order {
 		this.orderLineItems = orderLineItems;
 	}
 
+	public String getChannelType() {
+		return channelType;
+	}
+
+	public void setChannelType(String channelType) {
+		this.channelType = channelType;
+	}
+
 	@Override
 	public String toString() {
-		return "Order [orderId=" + id + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", orderTotal="
-				+ orderTotal + ", orderLineItems=" + orderLineItems + "]";
+		return "Order [id=" + id + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", channelType="
+				+ channelType + ", orderTotal=" + orderTotal + ", orderLineItems=" + orderLineItems + ", getId()="
+				+ getId() + ", getOrderDate()=" + getOrderDate() + ", getOrderStatus()=" + getOrderStatus()
+				+ ", getOrderTotal()=" + getOrderTotal() + ", getOrderLineItems()=" + getOrderLineItems()
+				+ ", getChannelType()=" + getChannelType() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
+
 
 }
