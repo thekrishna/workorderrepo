@@ -38,7 +38,7 @@ public class WorkOrderMgmtApiApplicationTests {
 	@Test
 	public void testCreateOrder() throws URISyntaxException    {
 
-
+            System.out.println(" ***********running testCreateOrder() **************");
 		final String baseUrl = "http://localhost:"+randomServerPort+"/orders";
 		URI uri = new URI(baseUrl);
 
