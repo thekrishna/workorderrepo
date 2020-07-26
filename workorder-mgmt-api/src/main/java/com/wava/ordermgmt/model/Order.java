@@ -13,15 +13,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Table(name = "ORDER_TBL")
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	/*
-	 * @Column(name = "order_id") private long orderId;
-	 */
 	@Column(name = "id")
 	private Long id;
 
@@ -35,23 +34,21 @@ public class Order {
 	@Column(name = "order_total")
 	private float orderTotal;
 
-	//@OneToMany(mappedBy = "order", cascade = CascadeType.ALL) //targetEntity = OrderLineItem.class)
+	// @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) //targetEntity =
+	// OrderLineItem.class)
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<OrderLineItem> orderLineItems;
 
 	public Order() {
 	}
 
-
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public LocalDateTime getOrderDate() {
 		return orderDate;
@@ -87,8 +84,8 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + id + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus
-				+ ", orderTotal=" + orderTotal + ", orderLineItems=" + orderLineItems + "]";
+		return "Order [orderId=" + id + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", orderTotal="
+				+ orderTotal + ", orderLineItems=" + orderLineItems + "]";
 	}
 
 }

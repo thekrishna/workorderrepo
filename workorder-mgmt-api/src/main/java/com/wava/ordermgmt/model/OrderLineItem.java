@@ -12,18 +12,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Table(name = "ORDER_LINE_ITEM_TBL")
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderLineItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	/*
-	 * @Column(name = "order_line_number") private long orderLineNumber;
-	 */
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(name = "order_description")
 	private String orderDescription;
 	private Integer quantity;
@@ -119,9 +118,9 @@ public class OrderLineItem {
 
 	@Override
 	public String toString() {
-		return "OrderLineItem [Id=" + id + ", orderDescription=" + orderDescription
-				+ ", quantity=" + quantity + ", price=" + price + ", topping1=" + topping1 + ", topping2=" + topping2
-				+ ", topping3=" + topping3 + ", productCode=" + productCode + ", order=" + order + "]";
+		return "OrderLineItem [Id=" + id + ", orderDescription=" + orderDescription + ", quantity=" + quantity
+				+ ", price=" + price + ", topping1=" + topping1 + ", topping2=" + topping2 + ", topping3=" + topping3
+				+ ", productCode=" + productCode + ", order=" + order + "]";
 	}
 
 }
