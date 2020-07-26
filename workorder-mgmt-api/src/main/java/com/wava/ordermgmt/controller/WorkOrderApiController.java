@@ -13,7 +13,6 @@ import com.wava.ordermgmt.model.Order;
 import com.wava.ordermgmt.service.WorkOrderService;
 
 @RestController
-//@EnableJpaRepositories
 public class WorkOrderApiController {
 	private WorkOrderService workOrderService;
 

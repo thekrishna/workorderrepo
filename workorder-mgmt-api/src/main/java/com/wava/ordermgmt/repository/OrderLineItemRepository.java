@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.wava.ordermgmt.model.OrderLineItem;
 
-//@Repository
+@Repository
 public interface OrderLineItemRepository extends CrudRepository<OrderLineItem,Long>{
 
 }

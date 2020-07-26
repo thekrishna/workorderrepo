@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table(name = "ORDER_LINE_ITEM")
+@Table(name = "ORDER_LINE_ITEM_TBL")
 @Entity
 public class OrderLineItem {
 	@Id
@@ -37,18 +37,6 @@ public class OrderLineItem {
 
 	public OrderLineItem(Order order) {
 		this.order = order;
-	}
-	
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		if (order == null) {
-			this.order = new Order();
-		} else {
-			this.order = order;
-		}
 	}
 
 	public long getOrderLineNumber() {
@@ -115,6 +103,19 @@ public class OrderLineItem {
 		this.productCode = productCode;
 	}
 
-	
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderLineItem [orderLineNumber=" + orderLineNumber + ", orderDescription=" + orderDescription
+				+ ", quantity=" + quantity + ", price=" + price + ", topping1=" + topping1 + ", topping2=" + topping2
+				+ ", topping3=" + topping3 + ", productCode=" + productCode + ", order=" + order + "]";
+	}
 
 }

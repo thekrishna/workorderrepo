@@ -1,5 +1,6 @@
 package com.wava.ordermgmt.model;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Table(name = "ORDER")
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Table(name = "ORDER_TBL")
 @Entity
 public class Order {
 	@Id
@@ -18,28 +21,21 @@ public class Order {
 	@Column(name = "order_id")
 	private long orderId;
 
-	/*
-	 * @Basic
-	 * 
-	 * @Temporal(TemporalType.TIMES	TAMP)
-	 * 
-	 * @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	 * 
-	 * @Column(name = "order_date") private Date orderDate;
-	 */
+	@Column(name = "order_date")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime orderDate;
 	
-
-    @OneToMany(mappedBy = "order")
-    private Set<OrderLineItem> orderLineItems;
-
-
 	@Column(name = "order_status")
 	private String orderStatus;
 
 	@Column(name = "order_total")
 	private float orderTotal;
-	
-	public Order() {}
+
+	@OneToMany(mappedBy = "order")
+	private Set<OrderLineItem> orderLineItems;
+
+	public Order() {
+	}
 
 	public long getOrderId() {
 		return orderId;
@@ -47,6 +43,14 @@ public class Order {
 
 	public void setOrderId(long orderId) {
 		this.orderId = orderId;
+	}
+
+	public LocalDateTime getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(LocalDateTime orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	public String getOrderStatus() {
@@ -64,8 +68,6 @@ public class Order {
 	public void setOrderTotal(float orderTotal) {
 		this.orderTotal = orderTotal;
 	}
-	
-	
 
 	public Set<OrderLineItem> getOrderLineItems() {
 		return orderLineItems;
@@ -74,9 +76,11 @@ public class Order {
 	public void setOrderLineItems(Set<OrderLineItem> orderLineItems) {
 		this.orderLineItems = orderLineItems;
 	}
-	
-	
 
-	
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus
+				+ ", orderTotal=" + orderTotal + ", orderLineItems=" + orderLineItems + "]";
+	}
 
 }

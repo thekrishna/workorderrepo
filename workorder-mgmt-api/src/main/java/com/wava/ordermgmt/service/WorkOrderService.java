@@ -12,11 +12,11 @@ import com.wava.ordermgmt.repository.OrderRepository;
 @Service
 public class WorkOrderService {
 	private OrderRepository orderRepository;
-	private OrderLineItemRepository orderLineItemRepository;
+	//private OrderLineItemRepository orderLineItemRepository;
 
 	public WorkOrderService(OrderRepository orderRepository, OrderLineItemRepository orderLineItemRepository) {
 		this.orderRepository = orderRepository;
-		this.orderLineItemRepository = orderLineItemRepository;
+		//this.orderLineItemRepository = orderLineItemRepository;
 	}
 
 	public Order saveOrder(final Order order) {
